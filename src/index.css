@@ -1,0 +1,292 @@
+body {
+  padding: 50px;
+  background-color: rgb(240, 240, 240);
+}
+
+.container {
+  margin-top: 40px;
+}
+
+ul {
+  list-style: none; 
+}
+
+
+.featuredBlock {
+  display: block;
+  margin-top: 40px;
+}
+
+.card {
+  background: linear-gradient(90deg, rgba(0,9,36,1) 0%, rgba(0,35,242,1) 0%, rgb(1, 30, 192) 100%);
+  padding: 20px;
+  border-radius: .8em;
+  color: #fff;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  transition: all .6s cubic-bezier(0,.5,.51,1);
+  margin-top: 50px;
+}
+
+
+.card h1 {
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+.social {
+  height: 30px;
+}
+
+.social i {
+  font-size: 1.4em;
+  padding-right: 15px;
+}
+
+.profilePhoto {
+  width: 124px;
+  height: 120px;
+  border-radius: 10%;
+  margin-bottom: 20px;
+  margin-top: -80px;
+  box-shadow: 0 3px 18px 0 hsla(237, 28%, 13%, 0.178);
+}
+
+.projects {
+  margin-top: 40px;
+}
+
+.project {
+  width: 100%;
+  background-color: #fff;
+  border-radius: .8em;
+  border: 0;
+  padding: 20px 12px 12px 20px;
+  margin-bottom: 25px;
+  transition: all .6s cubic-bezier(0,.5,.51,1);
+  overflow: auto;
+}
+
+
+.ptext {
+  float: left;
+  width: 50%;
+}
+
+.bullets {
+  float: right;
+  width: 45%;
+  height: 100%;
+  padding-top: 3px;
+  list-style: none;
+}
+
+
+.bullets ul {
+  padding-left: 0px;
+}
+
+
+.project h1 {
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.project p {
+  line-height: 1.3em;
+  font-size: 13px;
+}
+
+
+.project li {
+  padding-top: 4px;
+}
+
+
+.project li:hover {
+  color: #0023F2;
+}
+
+.grow { 
+  transition: all .24s cubic-bezier(0,.5,.51,1); }
+.grow:hover { transform: scale(1.01); }
+
+.grow2 { 
+  transition: all .24s cubic-bezier(0,.5,.51,1); }
+.grow2:hover { transform: scale(1.005); }
+
+.shadow {
+  box-shadow: 0 12px 30px rgba(0, 31, 204, 0.3);
+  -moz-box-shadow:    0 12px 30px rgba(0, 31, 204, 0.3);
+  -webkit-box-shadow: 0 12px 30px rgba(0, 28, 185, 0.349);
+}
+
+.shadow:hover {
+  box-shadow: 0 13px 30px rgba(0, 21, 141, 0.4);
+  -moz-box-shadow:    0 13px 30px rgba(0, 21, 141, 0.4);
+  -webkit-box-shadow: 0 13px 30px rgba(0, 21, 141, 0.4);
+}
+
+.shadow2 {
+  box-shadow: 0 3px 12px 0 hsla(0, 0%, 40%, 0.06);
+}
+
+.shadow2:hover {
+  box-shadow: 0 11px 15px 0 hsla(0, 0%, 80%, 0.2);
+}
+
+
+
+.stitle {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+a, a:hover, a:visited {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
+.day {
+  width: 100%;
+  background-color: #fff;
+  border-radius: .8em;
+  border: 0;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  padding-top: 1px;
+  transition: all .6s cubic-bezier(0,.5,.51,1);
+}
+
+.day ul {
+  padding-left: 30px;
+}
+
+.day li {
+  padding-bottom: 5px;
+  margin-right: 20px;
+}
+
+hr {
+  margin-bottom: 20px;
+}
+
+.tasks hr {
+  margin-bottom: 30px;
+  margin-left: 5px;
+  margin-right: 0px;
+}
+
+.day h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 17px;
+  margin-left: 20px;
+}
+
+.day hr {
+  background-color: #fff;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-left: 0px;
+}
+
+.day li {
+  margin-left: 24px;
+  margin-bottom: 5px;
+}
+
+.check {
+  margin-left: -25px;
+  margin-right: 0;
+}
+
+.desc span {
+  position: relative;
+  border-bottom: solid 1px #b3b3b3;
+  margin-left: 45%;
+  font-size: 22px;
+}
+
+.desc span:hover {
+  border-bottom: solid 1px #0030E9;
+}
+
+li span {
+  font-size: 14px;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+}
+
+/* admin stuff */
+
+.entry:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+.glyphicon {
+    font-size: 12px;
+}
+
+.submitButton {
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 990px) {
+  .tasks {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .ptext {
+    width: 100%;
+    float: none;
+    margin-bottom: -10px;
+  }
+
+  .bullets {
+    width: 100%;
+    float: none;
+  }
+
+  .tasks {
+    margin-top: 30px;
+  }
+}
+
+.Modal {
+  position: absolute;
+  top: 120px;
+  left: 160px;
+  right: 160px;
+  bottom: 120px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+-moz-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.15);
+  
+}
+
+*:focus {
+outline: none;
+}
