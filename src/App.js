@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import twemoji from 'twemoji';
 import ReactModal from 'react-modal';
@@ -21,6 +20,7 @@ const projects = [
         link: '//studddent.com'
       },
     ],
+    longDesc: "Studddent is a place for college students, and educators to share high-quality student discounts that are available online. I was excited last fall when I started my first term at university to start taking advantage of all the student discounts that I’d heard about, they can turn out to be quite helpful as a broke student. I quickly compiled a spreadsheet of my favorites and asked other students to send me any good ones. I wanted a way to spread the word about good discounts, so I decided to create a place for people to share and vote on great student discounts, with the goal of creating a curated list of high-quality resources for students.",
     featured: true,
   },
   {
@@ -157,7 +157,6 @@ class Project extends Component { // <a> Can't be nested
     this.state = {
       showModal: false
     };
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
@@ -181,38 +180,82 @@ class Project extends Component { // <a> Can't be nested
     const { project } = this.props;
     return (
       <div>
-        <div>
-          <button onClick={this.handleOpenModal}>Trigger Modal</button>
-          {this.state.showModal && <ReactModal
-            isOpen={this.state.showModal}
-            contentLabel="onRequestClose Example"
-            onRequestClose={this.handleCloseModal}
-            className="Modal"
-            overlayClassName="Overlay"
-          >
-            <h2>{project.title}</h2>
-            <button onClick={this.handleCloseModal}>Close Modal</button>
-          </ReactModal>
-          }
-        </div>
-          <div className="project shadow2 grow">
-            <div className="ptext">
-              <h1>{project.title}</h1>
-              <p>{project.desc}</p>
-            </div>
-            <div className="bullets">
-              <ul>
-                {project.badges.map((badge) =>
-                  <a key={badge.text} href={badge.link}>
-                    <li>{badge.text}</li>
-                  </a>
-                )}
-              </ul>
-            </div>
+          <ProjectModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} project={project} />
+        <div onClick={this.handleOpenModal} className="project shadow2 grow">
+          <div className="ptext">
+            <h1>{project.title}</h1>
+            <p>{project.desc}</p>
           </div>
+          <div className="bullets">
+            <ul>
+              {project.badges.map((badge) =>
+                <div key={badge.text}>
+                  <li>{badge.text}</li>
+                </div>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+const Button = ({ className, onClick, children }) =>
+  <button
+    className={className}
+    onClick={onClick}
+  >{children}
+  </button>
+
+const CloseModalButton = ({ className, onClick, children }) =>
+  <Button
+    className={className}
+    onClick={onClick}
+  >
+    <i className="fa fa-times" aria-hidden="true"></i>
+  </Button>
+
+const ProjectModal = ({ showModal, handleCloseModal, project }) =>
+  <div>
+    <ReactModal
+      isOpen={showModal}
+      contentLabel="onRequestClose Example"
+      onRequestClose={handleCloseModal}
+      className="Modal"
+      overlayClassName="Overlay"
+    >
+      <div className="modalBody">
+        <div className="modalHeader">
+          <div className="modalTitle">
+            <h3>{project.title}</h3>
+            <p>{project.desc}</p>
+          </div>
+          <CloseModalButton
+            className="closeModalButton"
+            onClick={handleCloseModal}
+          />
+        </div>
+        <hr />
+        <div className="modalSidebar">
+          <div className="modalBullets">
+            <ul>
+              {project.badges.map((badge) =>
+                <a href={badge.link} key={badge.text}>
+                  <li className="shadow3 grow">{badge.text}</li>
+                </a>
+              )}
+            </ul>
+          </div>
+        </div>
+        <div className="modalText">
+          {project.longDesc}
+        </div>
+
+      </div>
+    </ReactModal>
+  </div>
+
+
 
 export default App;

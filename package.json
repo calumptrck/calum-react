@@ -14,6 +14,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "eslint-config-google": "^0.9.1",
     "react-modal": "^3.4.4",
     "twemoji": "^2.5.1"
   }

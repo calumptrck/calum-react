@@ -68,6 +68,7 @@ ul {
   margin-bottom: 25px;
   transition: all .6s cubic-bezier(0,.5,.51,1);
   overflow: auto;
+  cursor: pointer;
 }
 
 
@@ -78,16 +79,14 @@ ul {
 
 .bullets {
   float: right;
-  width: 45%;
+  width: 50%;
   height: 100%;
   padding-top: 3px;
   list-style: none;
 }
 
 
-.bullets ul {
-  padding-left: 0px;
-}
+
 
 
 .project h1 {
@@ -138,6 +137,13 @@ ul {
   box-shadow: 0 11px 15px 0 hsla(0, 0%, 80%, 0.2);
 }
 
+.shadow3 {
+  box-shadow: 0 3px 12px 0 hsla(0, 0%, 40%, 0.25);
+}
+
+.shadow3:hover {
+  box-shadow: 0 11px 15px 0 hsla(0, 0%, 50%, 0.2);
+}
 
 
 .stitle {
@@ -240,10 +246,126 @@ img.emoji {
   margin-top: 40px;
 }
 
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.Modal {
+  position: absolute;
+  top: 80px;
+  left: 15%;
+  right: 15%;
+  bottom: 80px;
+  background-color: #fff;
+  padding: 20px;
+  padding-top: 35px;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+  box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+  transition: all .6s cubic-bezier(0,.5,.51,1);
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.35);
+  
+}
+
+.modalHeader {
+  width: 100%;
+  display: inline-block;
+}
+
+.modalTitle {
+  float: left;
+  max-width: 62%
+}
+
+.modalTitle p {
+  margin-bottom: 0px;
+}
+
+.modalBody {
+  padding: 5px 20px;
+  overflow: scroll;
+  height: 100%;
+}
+
+.modalText {
+  margin-top: 5px;
+  float: left;
+  width: 65%;
+}
+
+.modalSidebar {
+  float: right;
+  width: 30%
+}
+
+.modalSidebar li {
+  padding: 15px 10px;
+  border-radius: 0.5em;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all .6s cubic-bezier(0,.5,.51,1);
+}
+
+
+
+.modalSidebar ul{
+  padding: 0px; 
+}
+
+.closeModalButton {
+  float: right;
+  margin: 10px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 10px 5px 0px;
+  font: inherit;
+  cursor: pointer;
+  max-width: 13%;
+}
+
+.closeModalButton i {
+  font-size: 2em;
+  color: rgb(204, 204, 204);
+}
+
+*:focus {
+outline: none !important
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #FF0000;
+}
+
+
 @media screen and (max-width: 990px) {
   .tasks {
     margin-top: 30px;
   }
+
+@media screen and (max-width: 900px) {
+  .Modal {
+  top: 30px;
+  left: 5%;
+  right: 5%;
+  bottom: 20px;
+  }
+}
+
 }
 
 @media screen and (max-width: 560px) {
@@ -258,35 +380,46 @@ img.emoji {
     float: none;
   }
 
+  .bullets ul {
+    padding-left: 0px;
+  }
+
+  .modalBullets {
+    margin: 10px 0px 5px 0px;
+    width: 100%;
+    float: none;
+  }
+
   .tasks {
     margin-top: 30px;
   }
-}
 
-.Modal {
-  position: absolute;
-  top: 120px;
-  left: 160px;
-  right: 160px;
-  bottom: 120px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 0.5em;
-  -webkit-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
--moz-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
-}
+  .modalSidebar {
+    width: 100%;
+    padding: 0px;
+  }
 
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.15);
+  .modalText {
+    width: 100%;
+  }
   
+  .modalSidebar ul{
+    padding: 0px; 
+    width: 100%;
+  }
 }
 
-*:focus {
-outline: none;
+@media screen and (max-width: 480px) {
+  body {
+    padding: 25px 5px;
+  }
+  .modalBody {
+    padding: 5px;
+  }
+  
+  .modalSidebar ul{
+    padding: 0px; 
+  }
+
 }
+
