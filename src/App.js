@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   fetchTasks() {
-    axios(`http://localhost:3000/api/tasks`)
+    axios(`https://calum.co/api/tasks`)
       .then(result => this.setState({ tasks: result.data }))
       .catch(error => this.setState({ error: error }))
   }
@@ -123,7 +123,7 @@ const Day = ({ day }) =>
   <div className="day shadow2">
 
     <h1 className="taskDate">
-      <p>Current date</p>
+      <p>{day.date}</p>
     </h1>
     <hr />
     <ul>
