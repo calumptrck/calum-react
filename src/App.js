@@ -4,70 +4,9 @@ import './App.css';
 import twemoji from 'twemoji';
 import ReactModal from 'react-modal';
 import axios from 'axios';
+import projects from './projects.js';
 
 ReactModal.setAppElement('#root');
-
-const projects = [
-  {
-    title: ' 🏫 Studddent.',
-    desc: 'A powerful, curated stash of online discounts available for students.',
-    preview: 'images/studddent.png',
-    badges: [
-      {
-        text: '🔗 View Project',
-        link: '//studddent.com'
-      },
-      {
-        text: '🥇 #1 On Product Hunt',
-        link: '//www.producthunt.com/posts/studddent'
-      },
-      {
-        text: '👨‍💻 GitHub Repo',
-        link: '//github.com/calumptrck/Studddent'
-      },
-    ],
-    longDesc: "Studddent is a place for college students, and educators to share high-quality resources for learning design and development which offer a discount for students.",
-    featured: true,
-  },
-  {
-    title: ' 📈 Coindash.',
-    desc: 'A dashboard for monioring the crypto market, and your own investments.',
-    badges: [
-      {
-        text: '🔗 View Project',
-        link: '//calumptrck.github.io/CoinDash/'
-      },
-      {
-        text: '🚧 Work In Progress',
-        link: '//github.com/calumptrck/CoinDash/commits/master'
-      },
-
-    ],
-    featured: false,
-  },
-  {
-    title: ' 🌤️ LocalWeather.',
-    desc: 'Plaintext description of the weather on top of beautiful relevant Unsplash images.',
-    badges: [
-      {
-        text: '🔗 View Project',
-        link: '//calumptrck.github.io/LocalWeather/'
-      },
-    ],
-    featured: false,
-  },
-  {
-    title: ' 💰 TuitionCoins.',
-    desc: 'How much $$ UWaterloo students would have if they invested their tuition in bitcoin.',
-    badges: [
-      {
-        text: '🔗 View Project',
-        link: '//calumptrck.github.io/TuitionCoins/'
-      },
-    ],
-    featured: false,
-  },
-];
 
 class App extends Component {
   constructor(props) {
@@ -142,7 +81,10 @@ class Project extends Component { // <a> Can't be nested
     const { project } = this.props;
     return (
       <div>
-        <ProjectModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} project={project} />
+        <ProjectModal
+          showModal={this.state.showModal}
+          handleCloseModal={this.handleCloseModal}
+          project={project} />
         <div onClick={this.handleOpenModal} className="project shadow2 grow">
           <div className="ptext">
             <h1>{project.title}</h1>
@@ -281,6 +223,7 @@ const ProjectModal = ({ showModal, handleCloseModal, project }) =>
               )}
             </ul>
           </div>
+
           <p>{project.longDesc}</p>
         </div>
         <div className="preview-image">
@@ -289,6 +232,7 @@ const ProjectModal = ({ showModal, handleCloseModal, project }) =>
       </div>
     </ReactModal>
   </div>
+
 
 
 
