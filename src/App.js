@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import twemoji from 'twemoji';
 import ReactModal from 'react-modal';
+import axios from 'axios';
 
 ReactModal.setAppElement('#root');
 
@@ -10,17 +11,22 @@ const projects = [
   {
     title: ' 🏫 Studddent.',
     desc: 'A powerful, curated stash of online discounts available for students.',
+    preview: 'images/studddent.png',
     badges: [
+      {
+        text: '🔗 View Project',
+        link: '//studddent.com'
+      },
       {
         text: '🥇 #1 On Product Hunt',
         link: '//www.producthunt.com/posts/studddent'
       },
       {
-        text: '🔗 View Project',
-        link: '//studddent.com'
+        text: '👨‍💻 GitHub Repo',
+        link: '//github.com/calumptrck/Studddent'
       },
     ],
-    longDesc: "Studddent is a place for college students, and educators to share high-quality student discounts that are available online. I was excited last fall when I started my first term at university to start taking advantage of all the student discounts that I’d heard about, they can turn out to be quite helpful as a broke student. I quickly compiled a spreadsheet of my favorites and asked other students to send me any good ones. I wanted a way to spread the word about good discounts, so I decided to create a place for people to share and vote on great student discounts, with the goal of creating a curated list of high-quality resources for students.",
+    longDesc: "Studddent is a place for college students, and educators to share high-quality resources for learning design and development which offer a discount for students.",
     featured: true,
   },
   {
@@ -28,13 +34,14 @@ const projects = [
     desc: 'A dashboard for monioring the crypto market, and your own investments.',
     badges: [
       {
-        text: '🚧 Work In Progress',
-        link: '//github.com/calumptrck/CoinDash/commits/master'
-      },
-      {
         text: '🔗 View Project',
         link: '//calumptrck.github.io/CoinDash/'
       },
+      {
+        text: '🚧 Work In Progress',
+        link: '//github.com/calumptrck/CoinDash/commits/master'
+      },
+
     ],
     featured: false,
   },
@@ -65,85 +72,40 @@ const projects = [
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       projects: projects,
+      tasks: null,
+      error: null,
     }
+    this.fetchTasks = this.fetchTasks.bind(this);
+
   }
 
+  fetchTasks() {
+    axios(`http://localhost:3000/api/tasks`)
+      .then(result => this.setState({ tasks: result.data }))
+      .catch(error => this.setState({ error: error }))
+  }
 
+  componentDidMount() {
+    this.fetchTasks();
+  }
   render() {
-    const { projects } = this.state;
-
-
+    const { projects, tasks } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-lg-6 twi">
-            <div className="card shadow grow2">
-              <img className="profilePhoto" src="images/sm-sq.jpg" />
-              <h1>Calum Patrick.</h1>
-              <p>Currently studying mathematics at the University of Waterloo, as well as designing and developing web apps in
-            my free time using Node.js.</p>
-              <div className="social">
-                <a href="//github.com/calumptrck">
-                  <i className="fa fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="//www.instagram.com/calumpat/">
-                  <i className="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="//twitter.com">
-                  <i className="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="//www.youtube.com/channel/UCM2Fz5E-jKbEsMPRedz9ppQ">
-                  <i className="fa fa-youtube" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:calum@calum.co">
-                  <i className="fa fa-envelope" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-            <section className="featuredBlock">
-              <h1 className="stitle">Featured:</h1>
-              <hr />
-              {projects.filter((project) => project.featured).map((project) =>
-                <Project
-                  key={project.title}
-                  project={project}
-
-                />
-              )}
-            </section>
-            <section className="projects">
-              <h1 className="stitle">My Work:</h1>
-              <hr />
-              {projects.filter((project) => !project.featured).map((project, index) =>
-                <Project key={project.title} project={project} />
-              )}
-            </section>
+            <Card />
+            <ProjectSection className="featuredBlock" projects={projects} filter={(project) => project.featured}>
+              Featured:
+            </ProjectSection>
+            <ProjectSection className="projects" projects={projects} filter={(project) => !project.featured}>
+              My Work:
+            </ProjectSection>
           </div>
           <div className="col-lg-6">
-            <section className="tasks">
-              <h1 className="stitle">What I'm working on:</h1>
-              <hr />
-              <div className="day shadow2">
-                <h1 className="taskDate">
-                  <p>Current date</p>
-                </h1>
-                <hr />
-                <ul>
-                  <li>
-                    <span className="check">✅ </span>
-                    task
-                  </li>
-                </ul>
-              </div>
-              <div className="desc">
-                <a href="/tasks">
-                  <span>👀</span>
-                </a>
-              </div>
-            </section>
+            {tasks && <Tasks days={tasks} quantity={4} />}
           </div>
         </div>
       </div>
@@ -180,7 +142,7 @@ class Project extends Component { // <a> Can't be nested
     const { project } = this.props;
     return (
       <div>
-          <ProjectModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} project={project} />
+        <ProjectModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} project={project} />
         <div onClick={this.handleOpenModal} className="project shadow2 grow">
           <div className="ptext">
             <h1>{project.title}</h1>
@@ -188,7 +150,7 @@ class Project extends Component { // <a> Can't be nested
           </div>
           <div className="bullets">
             <ul>
-              {project.badges.map((badge) =>
+              {project.badges.slice(0, 2).map((badge) =>
                 <div key={badge.text}>
                   <li>{badge.text}</li>
                 </div>
@@ -200,6 +162,75 @@ class Project extends Component { // <a> Can't be nested
     );
   }
 }
+
+const Tasks = ({ days, quantity }) =>
+  <section className="tasks">
+    <h1 className="stitle">What I'm working on:</h1>
+    <hr />
+    {days.slice(0, quantity).map((day) =>
+      <Day day={day} key={day._id} />
+    )}
+    <div className="desc">
+      <a href="/tasks">
+        <span>👀</span>
+      </a>
+    </div>
+  </section>
+
+const Day = ({ day }) =>
+  <div className="day shadow2">
+
+    <h1 className="taskDate">
+      <p>Current date</p>
+    </h1>
+    <hr />
+    <ul>
+      {day.tasks.map((task, index) =>
+        <li key={index}>
+          <span className="check">✅ </span>
+          {task}
+        </li>
+      )}
+
+    </ul>
+  </div>
+
+
+
+const Card = () =>
+  <div className="card shadow grow2">
+    <img className="profilePhoto" src="images/sm-sq.jpg" />
+    <h1>Calum Patrick.</h1>
+    <p>Currently studying mathematics at the University of Waterloo, as well as designing and developing web apps in
+            my free time using Node.js.</p>
+    <div className="social">
+      <a href="//github.com/calumptrck">
+        <i className="fa fa-github" aria-hidden="true"></i>
+      </a>
+      <a href="//www.instagram.com/calumpat/">
+        <i className="fa fa-instagram" aria-hidden="true"></i>
+      </a>
+      <a href="//twitter.com">
+        <i className="fa fa-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="//www.youtube.com/channel/UCM2Fz5E-jKbEsMPRedz9ppQ">
+        <i className="fa fa-youtube" aria-hidden="true"></i>
+      </a>
+      <a href="mailto:calum@calum.co">
+        <i className="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+const ProjectSection = ({ className, projects, filter, children }) =>
+  <section className={className}>
+    <h1 className="stitle">{children}</h1>
+    <hr />
+    {projects.filter(filter).map((project, index) =>
+      <Project key={project.title} project={project} />
+    )}
+  </section>
+
 
 const Button = ({ className, onClick, children }) =>
   <button
@@ -240,18 +271,21 @@ const ProjectModal = ({ showModal, handleCloseModal, project }) =>
         <div className="modalSidebar">
           <div className="modalBullets">
             <ul>
-              {project.badges.map((badge) =>
+              <a href={project.badges[0].link} key={project.badges[0].text}>
+                <li className="badge-cta shadow grow">{project.badges[0].text}</li>
+              </a>
+              {project.badges.slice(1).map((badge) =>
                 <a href={badge.link} key={badge.text}>
                   <li className="shadow3 grow">{badge.text}</li>
                 </a>
               )}
             </ul>
           </div>
+          <p>{project.longDesc}</p>
         </div>
-        <div className="modalText">
-          {project.longDesc}
+        <div className="preview-image">
+          <img src={project.preview} />
         </div>
-
       </div>
     </ReactModal>
   </div>

@@ -146,6 +146,7 @@ ul {
 }
 
 
+
 .stitle {
   font-size: 32px;
   font-weight: 600;
@@ -264,6 +265,7 @@ img.emoji {
   -moz-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
   box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
   transition: all .6s cubic-bezier(0,.5,.51,1);
+  overflow: visible;
 }
 
 .Overlay {
@@ -296,29 +298,26 @@ img.emoji {
   height: 100%;
 }
 
-.modalText {
-  margin-top: 5px;
-  float: left;
-  width: 65%;
-}
-
 .modalSidebar {
   float: right;
-  width: 30%
+  width: 35%;
+  overflow: visible;
 }
 
 .modalSidebar li {
   padding: 15px 10px;
   border-radius: 0.5em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
   transition: all .6s cubic-bezier(0,.5,.51,1);
 }
 
-
-
 .modalSidebar ul{
   padding: 0px; 
+}
+
+.modalSidebar p {
+  margin-top: 30px;
 }
 
 .closeModalButton {
@@ -338,6 +337,11 @@ img.emoji {
   color: rgb(204, 204, 204);
 }
 
+.badge-cta {
+  background: linear-gradient(90deg, rgba(0,9,36,1) 0%, rgba(0,35,242,1) 0%, rgb(1, 30, 192) 100%);
+  color: #fff;
+}
+
 *:focus {
 outline: none !important
 }
@@ -348,15 +352,20 @@ outline: none !important
 }
 /* optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: #FF0000;
+  background: rgb(214, 214, 214);
 }
 
+.preview-image img{
+  width: 60%;  
+  margin-bottom: 25px;
+  border-radius: 0.5em;
+}
 
 @media screen and (max-width: 990px) {
   .tasks {
     margin-top: 30px;
   }
-
+}
 @media screen and (max-width: 900px) {
   .Modal {
   top: 30px;
@@ -366,6 +375,32 @@ outline: none !important
   }
 }
 
+@media screen and (max-width: 768px) {
+  
+  .modalBullets {
+    margin: 10px 0px 15px 0px;
+    width: 100%;
+    float: none;
+  }
+
+
+  .modalSidebar {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .preview-image img {
+    width: 100%;
+  }
+
+  .modalText {
+    width: 100%;
+  }
+  
+  .modalSidebar ul {
+    padding: 0px; 
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 560px) {
@@ -384,28 +419,10 @@ outline: none !important
     padding-left: 0px;
   }
 
-  .modalBullets {
-    margin: 10px 0px 5px 0px;
-    width: 100%;
-    float: none;
-  }
+  
 
   .tasks {
     margin-top: 30px;
-  }
-
-  .modalSidebar {
-    width: 100%;
-    padding: 0px;
-  }
-
-  .modalText {
-    width: 100%;
-  }
-  
-  .modalSidebar ul{
-    padding: 0px; 
-    width: 100%;
   }
 }
 
@@ -418,7 +435,9 @@ outline: none !important
   }
   
   .modalSidebar ul{
-    padding: 0px; 
+    padding-left: 15px; 
+    padding-right: 15px; 
+    outline: 10px solid transparent;
   }
 
 }
