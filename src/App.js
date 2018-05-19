@@ -5,6 +5,8 @@ import twemoji from 'twemoji';
 import ReactModal from 'react-modal';
 import axios from 'axios';
 import projects from './projects.js';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import moment from 'moment';
 
 ReactModal.setAppElement('#root');
 
@@ -13,11 +15,19 @@ class App extends Component {
     super(props)
     this.state = {
       projects: projects,
+      limit: 4,
       tasks: null,
       error: null,
     }
     this.fetchTasks = this.fetchTasks.bind(this);
+    this.addTasks = this.addTasks.bind(this);
 
+  }
+
+  addTasks() {
+    const oldLimit = this.state.limit;
+    this.setState({ limit: oldLimit + 2 })
+    
   }
 
   fetchTasks() {
@@ -30,7 +40,7 @@ class App extends Component {
     this.fetchTasks();
   }
   render() {
-    const { projects, tasks } = this.state;
+    const { projects, tasks, limit } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -44,7 +54,7 @@ class App extends Component {
             </ProjectSection>
           </div>
           <div className="col-lg-6">
-            {tasks && <Tasks days={tasks} quantity={4} />}
+            {tasks && <Tasks days={tasks} addTasks={this.addTasks} quantity={limit} />}
           </div>
         </div>
       </div>
@@ -105,17 +115,17 @@ class Project extends Component { // <a> Can't be nested
   }
 }
 
-const Tasks = ({ days, quantity }) =>
+const Tasks = ({ days, quantity, addTasks }) =>
   <section className="tasks">
     <h1 className="stitle">What I'm working on:</h1>
     <hr />
+    <ReactCSSTransitionGroup transitionName="addTask" >
     {days.slice(0, quantity).map((day) =>
       <Day day={day} key={day._id} />
     )}
+    </ReactCSSTransitionGroup>
     <div className="desc">
-      <a href="/tasks">
-        <span>👀</span>
-      </a>
+        <span onClick={addTasks}>👀</span>
     </div>
   </section>
 
@@ -123,7 +133,9 @@ const Day = ({ day }) =>
   <div className="day shadow2">
 
     <h1 className="taskDate">
-      <p>{day.date}</p>
+      <p>{day.date == moment().format('MMMM Do')
+          ? "Today"
+          : day.date }</p>
     </h1>
     <hr />
     <ul>

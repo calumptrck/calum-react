@@ -442,3 +442,16 @@ outline: none !important
 
 }
 
+.addTask-enter {
+  opacity: 0.01;
+  padding-bottom: 1px;
+  margin-bottom: 15px;
+}
+
+.addTask-enter.addTask-enter-active {
+  opacity: 1;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  transition: 700ms;
+}
+
