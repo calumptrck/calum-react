@@ -320,6 +320,10 @@ img.emoji {
   margin-top: 30px;
 }
 
+.modalBullets {
+  padding-bottom: 5px;
+}
+
 .closeModalButton {
   float: right;
   margin: 10px;

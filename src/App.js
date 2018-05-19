@@ -8,14 +8,15 @@ import projects from './projects.js';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import moment from 'moment';
 
-ReactModal.setAppElement('#root');
+ReactModal.setAppElement('body');
 
 class App extends Component {
+  _isMounted = false; // Independant from state
   constructor(props) {
     super(props)
     this.state = {
       projects: projects,
-      limit: 4,
+      limit: 3,
       tasks: null,
       error: null,
     }
@@ -24,21 +25,27 @@ class App extends Component {
 
   }
 
-  addTasks() {
+  addTasks(n) {
     const oldLimit = this.state.limit;
-    this.setState({ limit: oldLimit + 2 })
+    this.setState({ limit: oldLimit + n })
     
   }
 
   fetchTasks() {
     axios(`https://calum.co/api/tasks`)
-      .then(result => this.setState({ tasks: result.data }))
-      .catch(error => this.setState({ error: error }))
+      .then(result => this._isMounted && this.setState({ tasks: result.data }))
+      .catch(error => this._isMounted && this.setState({ error: error }))
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.fetchTasks();
   }
+
+  componentWillUnmount() {
+    this._isMounted = true;
+  }
+
   render() {
     const { projects, tasks, limit } = this.state;
     return (
@@ -115,17 +122,17 @@ class Project extends Component { // <a> Can't be nested
   }
 }
 
-const Tasks = ({ days, quantity, addTasks }) =>
+const Tasks = ({ days, quantity, addTasks }) => 
   <section className="tasks">
     <h1 className="stitle">What I'm working on:</h1>
     <hr />
-    <ReactCSSTransitionGroup transitionName="addTask" >
+    <ReactCSSTransitionGroup transitionName="addTask" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
     {days.slice(0, quantity).map((day) =>
       <Day day={day} key={day._id} />
     )}
     </ReactCSSTransitionGroup>
     <div className="desc">
-        <span onClick={addTasks}>👀</span>
+        <span onClick={() => addTasks(3)} role="img" aria-label="check">👀</span>
     </div>
   </section>
 
@@ -133,7 +140,7 @@ const Day = ({ day }) =>
   <div className="day shadow2">
 
     <h1 className="taskDate">
-      <p>{day.date == moment().format('MMMM Do')
+      <p>{day.date === moment().format('MMMM Do')
           ? "Today"
           : day.date }</p>
     </h1>
@@ -141,7 +148,7 @@ const Day = ({ day }) =>
     <ul>
       {day.tasks.map((task, index) =>
         <li key={index}>
-          <span className="check">✅ </span>
+          <span className="check" role="img" aria-label="check">✅ </span>
           {task}
         </li>
       )}
@@ -153,7 +160,7 @@ const Day = ({ day }) =>
 
 const Card = () =>
   <div className="card shadow grow2">
-    <img className="profilePhoto" src="images/sm-sq.jpg" />
+    <img className="profilePhoto" src="images/sm-sq.jpg" alt="profile" />
     <h1>Calum Patrick.</h1>
     <p>Currently studying mathematics at the University of Waterloo, as well as designing and developing web apps in
             my free time using Node.js.</p>
@@ -235,11 +242,11 @@ const ProjectModal = ({ showModal, handleCloseModal, project }) =>
               )}
             </ul>
           </div>
-
+          <hr/>
           <p>{project.longDesc}</p>
         </div>
         <div className="preview-image">
-          <img src={project.preview} />
+          <img src={project.preview} alt="project-preview" />
         </div>
       </div>
     </ReactModal>
