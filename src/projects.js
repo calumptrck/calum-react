@@ -1,4 +1,4 @@
-export default [
+const projects = [
   {
     title: ' 🏫 Studddent.',
     desc: 'A powerful, curated stash of online discounts available for students.',
@@ -65,3 +65,19 @@ export default [
     featured: false,
   },
 ];
+
+const ui = {
+  title: "💎 UI Design Practice",
+    desc: 'Daily practice with the focus of impproving my UI design skills.',
+    preview: 'images/weather.png',
+    badges: [
+      {
+        text: '🔗 View Project',
+        link: '//calumptrck.github.io/LocalWeather/'
+      },
+    ],
+    longDesc: "LocalWeather is a a weather homepage which tells you what's relevant, and nothing else.",
+    featured: true,
+  }
+
+export { projects, ui };

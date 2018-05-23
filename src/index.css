@@ -165,7 +165,7 @@ a, a:hover, a:visited {
   margin-bottom: 25px;
   padding-bottom: 15px;
   padding-top: 1px;
-  transition: all .6s cubic-bezier(0,.5,.51,1);
+  transition: all .6s cubic-bezier(0,.5,.35,1);
 }
 
 .day ul {
@@ -444,6 +444,19 @@ outline: none !important
     outline: 10px solid transparent;
   }
 
+}
+
+.addTask-appear {
+  opacity: 0.01;
+  padding-bottom: 1px;
+  margin-bottom: 15px;
+}
+
+.addTask-appear.addTask-appear-active {
+  opacity: 1;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  transition: 700ms;
 }
 
 .addTask-enter {
