@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Day from './Day'

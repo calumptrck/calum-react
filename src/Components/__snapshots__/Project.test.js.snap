@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App has a valid snapshot 1`] = `
+<div>
+  <div />
+  <div
+    className="project shadow2 grow"
+    onClick={[Function]}
+  >
+    <div
+      className="ptext"
+    >
+      <h1>
+         🌤️ LocalWeather.
+      </h1>
+      <p>
+        Plaintext description of the weather on top of beautiful relevant Unsplash images.
+      </p>
+    </div>
+    <div
+      className="bullets"
+    >
+      <ul>
+        <div>
+          <li>
+            🔗 View Project
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

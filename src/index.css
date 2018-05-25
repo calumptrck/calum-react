@@ -1,10 +1,11 @@
 body {
-  padding: 50px;
+  padding: 40px;
   background-color: rgb(240, 240, 240);
 }
 
 .container {
-  margin-top: 40px;
+  max-width: 950px;
+  margin-top: 30px;
 }
 
 ul {
@@ -19,22 +20,22 @@ ul {
 
 .card {
   background: linear-gradient(90deg, rgba(0,9,36,1) 0%, rgba(0,35,242,1) 0%, rgb(1, 30, 192) 100%);
-  padding: 20px;
-  border-radius: .8em;
+  padding: 15px;
+  border-radius: .6em;
   color: #fff;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,sans-serif,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial;
   transition: all .6s cubic-bezier(0,.5,.51,1);
-  margin-top: 50px;
+  margin-top: 37px;
 }
 
 
 .card h1 {
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 500;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .social {
@@ -47,11 +48,11 @@ ul {
 }
 
 .profilePhoto {
-  width: 124px;
-  height: 120px;
+  width: 95px;
+  height: 93px;
   border-radius: 10%;
-  margin-bottom: 20px;
-  margin-top: -80px;
+  margin-bottom: 15px;
+  margin-top: -65px;
   box-shadow: 0 3px 18px 0 hsla(237, 28%, 13%, 0.178);
 }
 
@@ -62,10 +63,10 @@ ul {
 .project {
   width: 100%;
   background-color: #fff;
-  border-radius: .8em;
+  border-radius: .6em;
   border: 0;
-  padding: 20px 12px 12px 20px;
-  margin-bottom: 25px;
+  padding: 18px 9px 9px 18px;
+  margin-bottom: 18px;
   transition: all .6s cubic-bezier(0,.5,.51,1);
   overflow: auto;
   cursor: pointer;
@@ -77,6 +78,10 @@ ul {
   width: 50%;
 }
 
+.ptext p {
+  margin-top: 7px;
+}
+
 .bullets {
   float: right;
   width: 50%;
@@ -85,23 +90,25 @@ ul {
   list-style: none;
 }
 
-
+.bullets li {
+  font-size: 13px;
+}
 
 
 
 .project h1 {
-  font-size: 20px;
+  font-size: 17px;
   margin-bottom: 3px;
 }
 
 .project p {
   line-height: 1.3em;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 
 .project li {
-  padding-top: 4px;
+  padding-top: 3px;
 }
 
 
@@ -148,8 +155,8 @@ ul {
 
 
 .stitle {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 700;
 }
 
 a, a:hover, a:visited {
@@ -162,8 +169,8 @@ a, a:hover, a:visited {
   background-color: #fff;
   border-radius: .8em;
   border: 0;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
   padding-top: 1px;
   transition: all .6s cubic-bezier(0,.5,.35,1);
 }
@@ -173,12 +180,22 @@ a, a:hover, a:visited {
 }
 
 .day li {
-  padding-bottom: 5px;
-  margin-right: 20px;
+  padding-bottom: 4px;
+  margin-right: 15px;
+  font-size: 15px;
+}
+
+.spacer {
+  display: block;
+  height: 40px;
 }
 
 hr {
   margin-bottom: 20px;
+}
+
+.hr2 {
+  margin: 0;
 }
 
 .tasks hr {
@@ -188,7 +205,7 @@ hr {
 }
 
 .day h1 {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   margin: 17px;
   margin-left: 20px;
@@ -202,8 +219,8 @@ hr {
 }
 
 .day li {
-  margin-left: 24px;
-  margin-bottom: 5px;
+  margin-left: 19px;
+  margin-bottom: 4px;
 }
 
 .check {
@@ -253,17 +270,16 @@ img.emoji {
 
 .Modal {
   position: absolute;
-  top: 80px;
+  top: 0px;
   left: 15%;
   right: 15%;
-  bottom: 80px;
+  bottom: 0px;
   background-color: #fff;
   padding: 20px;
   padding-top: 35px;
-  border-radius: 0.5em;
-  -webkit-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
-  -moz-box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
-  box-shadow: 0px 23px 66px 6px rgba(0,0,0,0.22);
+  -webkit-box-shadow: 0px 16px 55px 5px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 16px 55px 5px rgba(0,0,0,0.22);
+  box-shadow: 0px 16px 55px 5px rgba(0,0,0,0.22);
   transition: all .6s cubic-bezier(0,.5,.51,1);
   overflow: visible;
 }
@@ -286,6 +302,10 @@ img.emoji {
 .modalTitle {
   float: left;
   max-width: 62%
+}
+
+.modalTitle h3 {
+  font-size: 25px;
 }
 
 .modalTitle p {
@@ -317,7 +337,7 @@ img.emoji {
 }
 
 .modalSidebar p {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .modalBullets {
@@ -326,18 +346,17 @@ img.emoji {
 
 .closeModalButton {
   float: right;
-  margin: 10px;
   background: none;
   color: inherit;
   border: none;
-  padding: 10px 5px 0px;
+  padding: 5px 5px 0px;
   font: inherit;
   cursor: pointer;
   max-width: 13%;
 }
 
 .closeModalButton i {
-  font-size: 2em;
+  font-size: 1.5em;
   color: rgb(204, 204, 204);
 }
 
@@ -359,15 +378,26 @@ outline: none !important
   background: rgb(214, 214, 214);
 }
 
-.preview-image img{
-  width: 60%;  
-  margin-bottom: 25px;
+.preview-image2 img{
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 21px;
+  margin-bottom: 21px;
   border-radius: 0.5em;
 }
 
+.preview-image img{
+  width: 60%;  
+  margin-bottom: 21px;
+  border-radius: 0.5em;
+}
+
+
 @media screen and (max-width: 990px) {
   .tasks {
-    margin-top: 30px;
+    margin-top: 25px;
   }
 }
 @media screen and (max-width: 900px) {
@@ -376,6 +406,7 @@ outline: none !important
   left: 5%;
   right: 5%;
   bottom: 20px;
+  border-radius: 0.5em;
   }
 }
 
@@ -454,8 +485,8 @@ outline: none !important
 
 .addTask-appear.addTask-appear-active {
   opacity: 1;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
+  padding-bottom: 18px;
+  margin-bottom: 14px;
   transition: 700ms;
 }
 
@@ -467,8 +498,13 @@ outline: none !important
 
 .addTask-enter.addTask-enter-active {
   opacity: 1;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
+  padding-bottom: 18px;
+  margin-bottom: 14px;
   transition: 700ms;
+}
+
+.caseStudy h4 {
+  margin-top: 35px;
+  margin-bottom: 15px;
 }
 

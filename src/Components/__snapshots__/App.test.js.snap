@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App has a valid snapshot 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-6"
+    >
+      <div
+        className="card shadow grow2"
+      >
+        <img
+          alt="profile"
+          className="profilePhoto"
+          src="images/sm-sq.jpg"
+        />
+        <h1>
+          Calum Patrick.
+        </h1>
+        <p>
+          Currently studying mathematics at the University of Waterloo, as well as designing and developing web apps in my free time using Node.js.
+        </p>
+        <div
+          className="social"
+        >
+          <a
+            href="//github.com/calumptrck"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-github"
+            />
+          </a>
+          <a
+            href="//www.instagram.com/calumpat/"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-instagram"
+            />
+          </a>
+          <a
+            href="//twitter.com"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-twitter"
+            />
+          </a>
+          <a
+            href="//www.youtube.com/channel/UCM2Fz5E-jKbEsMPRedz9ppQ"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-youtube"
+            />
+          </a>
+          <a
+            href="mailto:calum@calum.co"
+          >
+            <i
+              aria-hidden="true"
+              className="fa fa-envelope"
+            />
+          </a>
+        </div>
+      </div>
+      <section
+        className="featuredBlock"
+      >
+        <h1
+          className="stitle"
+        >
+          Featured
+        </h1>
+        <hr />
+        <div>
+          <div />
+          <div
+            className="project shadow2 grow"
+            onClick={[Function]}
+          >
+            <div
+              className="ptext"
+            >
+              <h1>
+                 🏫 Studddent.
+              </h1>
+              <p>
+                A powerful, curated stash of online discounts available for students.
+              </p>
+            </div>
+            <div
+              className="bullets"
+            >
+              <ul>
+                <div>
+                  <li>
+                    🔗 View Project
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    🥇 #1 On Product Hunt
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div />
+          <div
+            className="project shadow2 grow"
+            onClick={[Function]}
+          >
+            <div
+              className="ptext"
+            >
+              <h1>
+                💎 UI Design Practice
+              </h1>
+              <p>
+                Daily practice with the focus of impproving my UI design skills.
+              </p>
+            </div>
+            <div
+              className="bullets"
+            >
+              <ul>
+                <div>
+                  <li>
+                    🚧 Work In Progress
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        className="projects"
+      >
+        <h1
+          className="stitle"
+        >
+          My Work
+        </h1>
+        <hr />
+        <div>
+          <div />
+          <div
+            className="project shadow2 grow"
+            onClick={[Function]}
+          >
+            <div
+              className="ptext"
+            >
+              <h1>
+                 📈 Coindash.
+              </h1>
+              <p>
+                A dashboard for monioring the crypto market, and your own investments.
+              </p>
+            </div>
+            <div
+              className="bullets"
+            >
+              <ul>
+                <div>
+                  <li>
+                    🔗 View Project
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    🚧 Work In Progress
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div />
+          <div
+            className="project shadow2 grow"
+            onClick={[Function]}
+          >
+            <div
+              className="ptext"
+            >
+              <h1>
+                 🌤️ LocalWeather.
+              </h1>
+              <p>
+                Plaintext description of the weather on top of beautiful relevant Unsplash images.
+              </p>
+            </div>
+            <div
+              className="bullets"
+            >
+              <ul>
+                <div>
+                  <li>
+                    🔗 View Project
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div />
+          <div
+            className="project shadow2 grow"
+            onClick={[Function]}
+          >
+            <div
+              className="ptext"
+            >
+              <h1>
+                 💰 TuitionCoins.
+              </h1>
+              <p>
+                How much $$ UWaterloo students would have if they invested their tuition in bitcoin.
+              </p>
+            </div>
+            <div
+              className="bullets"
+            >
+              <ul>
+                <div>
+                  <li>
+                    🔗 View Project
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div
+      className="col-md-6"
+    />
+  </div>
+</div>
+`;

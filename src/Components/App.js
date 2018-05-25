@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
-import twemoji from 'twemoji';
 import ReactModal from 'react-modal';
 import axios from 'axios';
-import { projects, ui } from './projects.js';
+import { projects, ui } from '../projects.js';
+import twemoji from 'twemoji';
 
 
-import UI from './Components/UI';
-import Project from './Components/Project';
-import Card from './Components/Card';
-import Tasks from './Components/Tasks';
+import UI from './UI';
+import Project from './Project';
+import Card from './Card';
+import Tasks from './Tasks';
 
 ReactModal.setAppElement('body');
 
@@ -44,10 +43,11 @@ class App extends Component {
   componentDidMount() {
     this._isMounted = true;
     this.fetchTasks();
+    twemoji.parse(document.body);
   }
 
   componentWillUnmount() {
-    this._isMounted = true;
+    this._isMounted = false;
   }
 
   render() {
@@ -55,13 +55,13 @@ class App extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 twi">
+          <div className="col-md-6">
             <Card />
             <Section title="Featured" className="featuredBlock">
-              <UI key={ui.title} article={ui} />
               {projects.filter((project) => project.featured).map((project, index) =>
                 <Project key={project.title} project={project} />
               )}
+              <UI key={ui.title} article={ui} />
             </Section>
 
               <Section title="My Work" className="projects">
@@ -70,7 +70,7 @@ class App extends Component {
               )}
             </Section>
           </div>
-          <div className="col-lg-6">
+          <div className="col-md-6">
             {tasks && <Tasks days={tasks} addTasks={this.addTasks} quantity={limit} />}
           </div>
         </div>
@@ -78,9 +78,6 @@ class App extends Component {
     );
   }
 }
-
-
-
 
 
 const Section = ({ title, className, children }) =>

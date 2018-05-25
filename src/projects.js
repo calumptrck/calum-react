@@ -72,12 +72,17 @@ const ui = {
     preview: 'images/weather.png',
     badges: [
       {
-        text: '🔗 View Project',
-        link: '//calumptrck.github.io/LocalWeather/'
+        text: '🚧 Work In Progress',
+        link: '#'
       },
     ],
-    longDesc: "LocalWeather is a a weather homepage which tells you what's relevant, and nothing else.",
     featured: true,
+
+    subtext: "Since May 24th, I have been putting daily practice into improving my UI design skills. Here is some of what I've been working on.",
+    
+    img1: 'images/coffee.png',
+    header1: 'Order Ahead Coffee App',
+    text1: "The focus of this app is to be as quick and simple to use as possible. The app generates the customer's most common orders, and allows them to reorder their usual order immediately.",
   }
 
 export { projects, ui };

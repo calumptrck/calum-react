@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ReactModal from 'react-modal';
-import twemoji from 'twemoji';
-import {articles} from '../projects.js';
 
-import ProjectModal from './ProjectModal';
+import UIModal from './UIModal.js';
 
 class UI extends Component { // <a> Can't be nested
   constructor() {
@@ -23,19 +19,11 @@ class UI extends Component { // <a> Can't be nested
   handleCloseModal() {
     this.setState({ showModal: false });
   }
-
-  parseEmoji = () => {
-    twemoji.parse(ReactDOM.findDOMNode(this))
-  }
-
-  componentDidMount() {
-    this.parseEmoji()
-  }
   render() {
     const { article } = this.props;
     return (
       <div>
-        <ProjectModal
+        <UIModal
           showModal={this.state.showModal}
           handleCloseModal={this.handleCloseModal}
           project={article} />
