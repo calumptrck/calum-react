@@ -10,6 +10,8 @@ import UI from './UI';
 import Project from './Project';
 import Card from './Card';
 import Tasks from './Tasks';
+import Section from './Section'
+import ContentPreview from './ContentPreview';
 
 ReactModal.setAppElement('body');
 
@@ -59,14 +61,14 @@ class App extends Component {
             <Card />
             <Section title="Featured" className="featuredBlock">
               {projects.filter((project) => project.featured).map((project, index) =>
-                <Project key={project.title} project={project} />
+                <ContentPreview key={project.title} content={project} />
               )}
-              <UI key={ui.title} article={ui} />
+              <ContentPreview key={ui.title} content={ui} />
             </Section>
 
               <Section title="My Work" className="projects">
               {projects.filter((project) => !project.featured).map((project, index) =>
-                <Project key={project.title} project={project} />
+                <ContentPreview key={project.title} content={project} />
               )}
             </Section>
           </div>
@@ -78,13 +80,5 @@ class App extends Component {
     );
   }
 }
-
-
-const Section = ({ title, className, children }) =>
-  <section className={className}>
-    <h1 className="stitle">{title}</h1>
-    <hr />
-    {children}
-  </section>
 
 export default App;
