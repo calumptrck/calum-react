@@ -16,7 +16,7 @@ import ContentPreview from './ContentPreview';
 ReactModal.setAppElement('body');
 
 class App extends Component {
-  _isMounted = false; // Independant from state
+  _isMounted = false; // Independent from state
   constructor(props) {
     super(props)
     this.state = {
